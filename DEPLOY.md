@@ -65,7 +65,7 @@ systemctl start invoice-converter
 cat > /etc/nginx/sites-available/invoice-converter << 'NGINX'
 server {
     listen 80;
-    server_name invoices.fidelityfulfilment.com;
+    server_name carriers.fidelityfulfilment.co.uk;
 
     location / {
         proxy_pass http://127.0.0.1:8502;
@@ -85,13 +85,13 @@ nginx -t && systemctl reload nginx
 
 ## 6. SSL Certificate (HTTPS)
 ```bash
-certbot --nginx -d invoices.fidelityfulfilment.com
+certbot --nginx -d carriers.fidelityfulfilment.co.uk
 ```
 
 ## 7. Point your domain
-Add a DNS A record:
+Add a DNS A record on the **fidelityfulfilment.co.uk** zone:
 - Type: A
-- Name: invoices
+- Name: carriers
 - Value: YOUR_DROPLET_IP
 
 ## 8. Updating the app
