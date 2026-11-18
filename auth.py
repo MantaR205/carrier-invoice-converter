@@ -7,6 +7,8 @@ import os
 import time
 import streamlit as st
 
+from idle_close import idle_close
+
 SESSION_TIMEOUT_MINUTES = 30
 
 
@@ -15,6 +17,7 @@ def check_password() -> bool:
     Returns True if authenticated and the session is still active.
     Shows a login screen otherwise.
     """
+    idle_close()   # first, so the password screen closes itself too
     password = os.environ.get("CONVERTER_PASSWORD", "")
 
     if not password:
